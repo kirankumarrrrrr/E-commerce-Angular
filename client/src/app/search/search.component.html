@@ -1,0 +1,62 @@
+<div style="text-align: center; padding: 45px 0;">
+  <div style="display: flex; justify-content: center; align-items: center;">
+      <input class="form-control form-control-lg" type="search" placeholder="Search Products..." style="width: 500px; margin-right: 10px;" [(ngModel)]="searchQuery">
+      <button class="btn btn-lg btn-danger" type="submit" (click)="search(searchQuery)">Search</button>
+  </div>
+</div>
+
+<div *ngIf="!onSearch">
+  <div style="text-align: center; padding-top: 10px; font-weight: 200; font-size: x-large; font-style: italic;">
+    Recommended Products
+  </div>
+
+  <!-- Search Bar -->
+  <div class="container" style="padding-top: 20px;">
+    <div class="row">
+      <div *ngFor="let product of recommendedProducts" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" [src]="product.thumbnail" alt="{{product.title}}">
+          <div class="card-body d-flex flex-column">
+            <h4 class="card-title">{{product.title}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{product.category}}</h6>
+            <p class="card-text">{{product.description}}</p>
+            <div class="buy d-flex justify-content-between align-items-center mt-auto">
+              <div class="price text-success">
+                <h5>{{product.price}} RS</h5>
+              </div>
+              <a class="btn btn-danger" (click)="addtocart(product.id)" [style.cursor]="'pointer'">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="onSearch">
+  <div style="text-align: center; padding-top: 10px; font-weight: 200; font-size: x-large; font-style: italic;">
+    Search Results <i class="bi bi-x" (click)="clearsearch()" style="padding: 5px;font-size: 25px;"></i>
+  </div>
+ <div *ngIf="searchedProducts.length === 0" style="padding: 0 40px 40px 40px;font-weight: bold;">No products found</div>
+  <!-- Search Bar -->
+  <div class="container" style="padding-top: 20px;">
+    <div class="row">
+      <div *ngFor="let product of searchedProducts" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" [src]="product.thumbnail" alt="{{product.title}}">
+          <div class="card-body d-flex flex-column">
+            <h4 class="card-title">{{product.title}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{product.category}}</h6>
+            <p class="card-text">{{product.description}}</p>
+            <div class="buy d-flex justify-content-between align-items-center mt-auto">
+              <div class="price text-success">
+                <h5>{{product.price}} RS</h5>
+              </div>
+              <a class="btn btn-danger" (click)="addtocart(product.id)" [style.cursor]="'pointer'">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

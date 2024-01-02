@@ -1,0 +1,28 @@
+<!-- cart.component.html -->
+<div class="container mt-5">
+  <div class="card">
+      <div class="card-body">
+          <div *ngFor="let item of cartItems" class="row mb-4">
+              <div class="col-md-2">
+                  <img [src]="item.thumbnail" alt="Product Thumbnail" class="img-fluid cart-item-image">
+              </div>
+              <div class="col-md-8">
+                  <div class="cart-item-info">
+                      <h5 class="card-title">{{ item.title }}</h5>
+                      <p class="card-text">{{ item.description }}</p>
+                      <p class="card-text"><small class="text-muted">Price: ${{ item.price }}</small></p>
+                      <p class="card-text"><small class="text-muted">Quantity: {{ item.quantity }}</small></p>
+                      <button (click)="removeItem(item.id)" class="btn btn-danger">Remove</button>
+                  </div>
+              </div>
+          </div>
+          <div *ngIf="cartItems.length === 0" class="text-center mt-3">Your cart is empty.</div>
+          <div class="cart-total mt-3" *ngIf="cartItems.length > 0">
+              <h5 class="card-title">Total:</h5>
+              <p class="card-text">{{ getTotalAmount() }} Rs</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+  

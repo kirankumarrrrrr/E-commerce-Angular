@@ -1,0 +1,55 @@
+/* Add your custom styles here */
+
+/* Center the web name and logo */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style the profile icon and login/register buttons */
+  .navbar-nav.ml-auto .nav-item.nav-link {
+    display: flex;
+    align-items: center;
+    
+  }
+
+  .navbar-nav.ml-auto .nav-item.nav-link i {
+    margin-right: 5px;
+  }
+  
+
+  /* Add your custom styles here */
+
+/* Style the footer */
+.footer {
+    background-color: #f8f9fa;
+  }
+  
+  /* Center the content in the footer */
+  .footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Add some space between the copyright text and social icons */
+  .footer .container .text-muted {
+    margin-bottom: 10px;
+  }
+  
+  /* Style the social media icons */
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icons a {
+    color: #007bff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .social-icons a:hover {
+    color: #0056b3;
+  }
+  

@@ -1,0 +1,82 @@
+<div class="app-container">
+  <!-- NavBar -->
+  <header class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- Logo and Web Name -->
+      <a class="navbar-brand" style="cursor: pointer;" >
+        <i class="bi bi-shop" style="padding-right: 10px;font-size:30px;"></i>
+       <p (click)="setComps('Home')" style="align-items: center;margin: auto;">Commerce</p>
+      </a>
+  
+      <!-- Navigation Links (on the left) -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" style="cursor: pointer;">
+          <li class="nav-item">
+            <a class="nav-link"  (click)="setComps('Home')">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  (click)="setComps('Profile')">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  (click)="setComps('Profile')">Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  (click)="setComps('Search')">Search</a>
+          </li>
+        </ul>
+        <!-- <div style="margin: auto 0; display: flex; flex-direction: column; position: relative;" class="input-box">
+          <input type="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" class="form-control" />
+          <i class="bi bi-search" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 20px;" (click)="this.searchbar=!this.searchbar"></i>
+        </div> -->
+      </div>
+  
+      <!-- Profile Icon, Login, and Register Buttons (on the right) -->
+      <div class="navbar-nav ml-auto" style="cursor: pointer;">
+        <a *ngIf="loggedin" class="nav-item nav-link"  (click)="setComps('Profile')">
+          <i class="bi bi-person-circle" style="font-size: 30px;"></i>
+        </a>
+        <a *ngIf="!loggedin" class="nav-item nav-link"  (click)="setComps('Login')">
+          Login
+        </a>
+        <a *ngIf="!loggedin" class="nav-item nav-link"  (click)="setComps('Signup')">
+          Signup
+        </a>
+        <a class="nav-item nav-link"  (click)="setComps('Cart')">
+          <i class="bi bi-cart" style="font-size: 30px;"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+  
+
+  <!-- comps -->
+  <div class="content-container" style="padding-bottom: 60px;">
+    <app-user-profile *ngIf="comps === 'Profile'" class="content-section"></app-user-profile>
+    <app-homepage *ngIf="comps === 'Home'" class="content-section"></app-homepage>
+    <app-login *ngIf="comps === 'Login'" class="content-section" (parentcall)="authuser($event)"></app-login>
+    <app-register *ngIf="comps === 'Signup'" class="content-section" (childEmitter)="setComps('Home')"></app-register>
+    <app-cart *ngIf="comps === 'Cart'" class="content-section" [userAuth]="userAuth"></app-cart>
+    <app-search *ngIf="comps === 'Search'" class="content-section" [userAuth]="userAuth" [searchinputfromHome]="searchinputfromHome"></app-search>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer fixed-bottom py-3">
+    <div class="container text-center">
+      <!-- Copyright and Web Name -->
+      <span class="text-muted">&copy; 2023 Commerce. All rights reserved.</span>
+
+      <!-- Social Media Icons (replace with your own icons/links) -->
+      <div class="social-icons">
+        <a  target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a  target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a  target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>
