@@ -1,4 +1,5 @@
 const userSchema = require("../ModelSchema/userSchema")
+const profileService = require("../services/profileService")
 
 exports.createUser = async (req, res) => {
   try {
@@ -8,6 +9,17 @@ exports.createUser = async (req, res) => {
       if (!findUser) {
         // Create a new user
         const newUser = await userSchema.create(req.body);
+        if(newUser){
+          let newProfile= {
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            mobile: "",
+            email:req.body.email,
+            gender: "",
+            dob: ""
+          }
+          const profilecreated = profileService.createProfile(newProfile);
+        }
         res.status(200);
         res.json(newUser);
       } else {
@@ -46,7 +58,7 @@ exports.LoginUser = async(req, res) => {
     }
   }catch(err){
     // Handle any errors that may occur during database operations
-    console.error(error);
+    console.error(err);
     res.status(500).json({
       message: "Internal Server Error",
       success: false

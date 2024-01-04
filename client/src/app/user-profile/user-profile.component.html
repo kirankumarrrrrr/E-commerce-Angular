@@ -1,1 +1,50 @@
-<p>user-profile works!</p>
+<section *ngIf="!loggingout">
+    <div *ngIf="!isediting" class="profile-container">
+        <div class="container">
+          <img class="profile-img" src="./assets/no-user.jpg" alt="profile-pic">
+          <h4>Hello, {{ firstname }} {{ lastname }}</h4>
+          <div class="user-data">
+            <p>Email: {{ email }}</p>
+            <p>Mobile: {{ mobile }}</p>
+            <p>Gender: {{gender}}</p>
+            <p>Date of Birth: {{ dob }}</p>
+            <button class="btn btn-danger boton" (click)="isedit()">Edit Profile</button>
+            <button class="btn btn-danger boton" (click)="logout()">Logout</button>
+          </div>
+        </div>
+      </div>
+    
+      <div *ngIf="alert" class="success-message" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <img src="./assets/success.gif" alt="Tick Symbol" class="tick-symbol" style="height: 100px;width:100px">
+        <h2>Updated successfully</h2>
+        <p style="cursor:pointer">redirecting to Profile...</p>
+      </div>
+    
+      <form *ngIf="isediting && !alert" class="form-group forming">
+        <label>First Name:</label>
+        <input class="form-control" name="firstname" type="text" [(ngModel)]="Newfirstname" >
+    
+        <label>Last Name:</label>
+        <input class="form-control" name="lastname" type="text" [(ngModel)]="Newlastname">
+    
+        <label>Date Of Birth:</label>
+        <input class="form-control" name="mobile" type="text" [(ngModel)]="Newmobile">
+    
+        <label>Date Of Birth:</label>
+        <input class="form-control" name="dob" type="date" [(ngModel)]="Newdob">
+    
+        <label>Gender:</label>
+        <input type="radio" name="gender" [(ngModel)]="Newgender" value="Male"> Male
+        <input type="radio" name="gender" [(ngModel)]="Newgender" value="Female"> Female
+        <input type="radio" name="gender" [(ngModel)]="Newgender" value="Other"> Other
+    
+        <button class="btn btn-danger boton" (click)="savechanges()">Save Changes</button>
+        <button class="btn btn-danger boton" (click)="isedit()">Cancel</button>
+      </form>    
+</section>
+
+<div *ngIf="loggingout" class="success-message" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <img src="./assets/success.gif" alt="Tick Symbol" class="tick-symbol" style="height: 100px;width:100px">
+    <h2>Logging out</h2>
+    <p style="cursor:pointer">redirecting to Home Page...</p>
+  </div>

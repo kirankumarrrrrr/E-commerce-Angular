@@ -56,4 +56,20 @@ export class DataserviceService {
     }));
   }
 
+ getProfile(reqparam:any){
+    return this.httpClient.post("http://localhost:4000/api/profile/getProfile",reqparam)
+    .pipe(catchError(error=>{
+      console.error('Login error:', error);
+      return throwError(error); // Or handle the error differently
+    }))
+  }
+
+  editProfile(reqparam:any){
+      return this.httpClient.post("http://localhost:4000/api/profile/updateProfile",reqparam)
+      .pipe(catchError(error=>{
+        console.error('Login error:', error);
+        return throwError(error); // Or handle the error differently
+      }))
+    }
+
 }

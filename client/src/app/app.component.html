@@ -15,10 +15,7 @@
             <a class="nav-link"  (click)="setComps('Home')">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  (click)="setComps('Profile')">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  (click)="setComps('Profile')">Contact us</a>
+            <a class="nav-link"  (click)="setComps('Contactus')">Contact us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link"  (click)="setComps('Search')">Search</a>
@@ -51,7 +48,7 @@
 
   <!-- comps -->
   <div class="content-container" style="padding-bottom: 60px;">
-    <app-user-profile *ngIf="comps === 'Profile'" class="content-section"></app-user-profile>
+    <app-user-profile *ngIf="comps === 'Profile'" class="content-section" [userAuth]="userAuth"></app-user-profile>
     <app-homepage *ngIf="comps === 'Home'" class="content-section"></app-homepage>
     <app-login *ngIf="comps === 'Login'" class="content-section" (parentcall)="authuser($event)"></app-login>
     <app-register *ngIf="comps === 'Signup'" class="content-section" (childEmitter)="setComps('Home')"></app-register>

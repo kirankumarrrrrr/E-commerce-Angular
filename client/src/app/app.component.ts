@@ -37,6 +37,15 @@ export class AppComponent {
     // this.childComponent.refreshcartdata(value.email);
   }
 
+  logout(){
+    this.userAuth= {
+      'userid':'',
+      'loggedin':false
+    };
+    this.loggedin=false;
+    this.comps='Home';
+  }
+
   getserachcomp(value:any){
     this.comps='Search';
     this.searchinputfromHome={
